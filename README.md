@@ -1,7 +1,3 @@
-Certainly! Here's the revised README file for your LumenLens project:
-
----
-
 # LumenLens | Backend for Blog Application
 
 <p align="center">
@@ -56,7 +52,3 @@ Happy exploring!
 - **Portfolio:** [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/nayefserag)
 
 - **LinkedIn:** [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nayf-serag-70a3611b8)
-
----
-
-Feel free to adjust any details or add additional sections as needed!# LumenLens
