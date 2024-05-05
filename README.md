@@ -1,10 +1,10 @@
 # LumenLens | Backend for Blog Application
 
-<div style="display: flex;">
+<div style="display: flex; justify-content: center;">
 
   <div style="flex: 1;">
-    <a href="https://imgur.com/arzeGFk"><img src="https://i.imgur.com/arzeGFk.png" title="source: imgur.com" style="max-width: 50%; height: auto;" /></a>
-    <a href="https://imgur.com/aERHdkR"><img src="https://i.imgur.com/aERHdkR.png" title="source: imgur.com" style="max-width: 50%; height: auto;" /></a>
+    <a href="https://imgur.com/arzeGFk"><img src="https://i.imgur.com/arzeGFk.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
+    <a href="https://imgur.com/aERHdkR"><img src="https://i.imgur.com/aERHdkR.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
   </div>
   
 </div>
