@@ -1,10 +1,12 @@
 # LumenLens | Backend for Blog Application
 
-<div style="display: inline-block;">
-    <a href="https://imgur.com/aERHdkR"><img src="https://i.imgur.com/aERHdkR.png" title="source: imgur.com" /></a>
-</div>
-<div style="display: inline-block;">
-    <a href="https://imgur.com/arzeGFk"><img src="https://i.imgur.com/arzeGFk.png" title="source: imgur.com" /></a>
+<div style="position: relative;">
+    <div style="position: absolute; top: 0; left: 0;">
+        <a href="https://imgur.com/aERHdkR"><img src="https://i.imgur.com/aERHdkR.png" title="source: imgur.com" /></a>
+    </div>
+    <div style="position: relative;">
+        <a href="https://imgur.com/arzeGFk"><img src="https://i.imgur.com/arzeGFk.png" title="source: imgur.com" /></a>
+    </div>
 </div>
 
 
