@@ -1,13 +1,14 @@
 # LumenLens | Backend for Blog Application
 
 <div style="display: flex;">
-    <div style="flex: 1; padding: 10px;">
-        <a href="https://imgur.com/aERHdkR"><img src="https://i.imgur.com/aERHdkR.png" title="source: imgur.com" style="max-width: 100%; height: auto;" /></a>
-    </div>
-    <div style="flex: 1; padding: 10px;">
-        <a href="https://imgur.com/arzeGFk"><img src="https://i.imgur.com/arzeGFk.png" title="source: imgur.com" style="max-width: 100%; height: auto;" /></a>
-    </div>
+  <div style="flex: 1;">
+    <a href="https://imgur.com/aERHdkR"><img src="https://i.imgur.com/aERHdkR.png" title="source: imgur.com" style="max-width: 50%; height: auto;" /></a>
+  </div>
+  <div style="flex: 1;">
+    <a href="https://imgur.com/arzeGFk"><img src="https://i.imgur.com/arzeGFk.png" title="source: imgur.com" style="max-width: 50%; height: auto;" /></a>
+  </div>
 </div>
+
 
 LumenLens is a powerful backend solution tailored for a blog application, offering secure authentication, CRUD operations, and additional features to enhance the user experience. Built using Lumen, a lightweight PHP framework, it provides efficient endpoints for seamless communication between the frontend and server.
 
