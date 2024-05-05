@@ -1,0 +1,6 @@
+{
+    "watch": ["app/", "routes/", "config/", "public/", "resources/"],
+    "ext": "php",
+    "exec": "php -S localhost:8000 -t public"
+  }
+  
