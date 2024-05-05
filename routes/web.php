@@ -25,15 +25,13 @@ $router->group(['prefix' => 'posts'], function () use ($router) {
     $router->get('/{id}', 'PostController@show');
     $router->put('/{id}', 'PostController@update');
     $router->delete('/{id}', 'PostController@destroy');
-
-    // Nested routes for comments within posts
     $router->get('/{postId}/comments', 'CommentController@index');
     $router->post('/{postId}/comments', 'CommentController@store');
     $router->put('/comments/{id}', 'CommentController@update');
     $router->delete('/comments/{id}', 'CommentController@destroy');
 });
 
-// User management routes with authentication middleware
+
 $router->group(['prefix' => 'users', 'middleware' => 'auth'], function () use ($router) {
     $router->post('/register', 'UserController@register');
     $router->post('/login', 'UserController@login');

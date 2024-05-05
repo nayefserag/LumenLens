@@ -1,299 +1,303 @@
 {
-    "info": {
-      "_postman_id": "b13131e3-42fb-423c-a28f-0a3829fd23e7",
-      "name": "Blog API",
-      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  "info": {
+    "_postman_id": "b13131e3-42fb-423c-a28f-0a3829fd23e7",
+    "name": "Blog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "Get App Version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": []
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Posts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Post",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Post by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts",
+                "{id}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Post",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts",
+                "{id}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts",
+                "{id}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     },
-    "item": [
-      {
-        "name": "Posts",
-        "item": [
-          {
-            "name": "Get App Version",
-            "request": {
-              "method": "GET",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": []
-              }
-            },
-            "response": []
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Get Comments for Post",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/{postId}/comments",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts",
+                "{postId}",
+                "comments"
+              ]
+            }
           },
-          {
-            "name": "Get All Posts",
-            "request": {
-              "method": "GET",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts"
-                ]
-              }
-            },
-            "response": []
+          "response": []
+        },
+        {
+          "name": "Add Comment to Post",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/{postId}/comments",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts",
+                "{postId}",
+                "comments"
+              ]
+            }
           },
-          {
-            "name": "Create Post",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts"
-                ]
-              }
-            },
-            "response": []
+          "response": []
+        },
+        {
+          "name": "Update Comment",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/comments/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts",
+                "comments",
+                "{id}"
+              ]
+            }
           },
-          {
-            "name": "Get Post by ID",
-            "request": {
-              "method": "GET",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/{id}",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts",
-                  "{id}"
-                ]
-              }
-            },
-            "response": []
+          "response": []
+        },
+        {
+          "name": "Delete Comment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/posts/comments/{id}",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "posts",
+                "comments",
+                "{id}"
+              ]
+            }
           },
-          {
-            "name": "Update Post",
-            "request": {
-              "method": "PUT",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/{id}",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts",
-                  "{id}"
-                ]
-              }
-            },
-            "response": []
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
           },
-          {
-            "name": "Delete Post",
-            "request": {
-              "method": "DELETE",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/{id}",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts",
-                  "{id}"
-                ]
-              }
-            },
-            "response": []
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
           },
-          {
-            "name": "Get Comments for Post",
-            "request": {
-              "method": "GET",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/{postId}/comments",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts",
-                  "{postId}",
-                  "comments"
-                ]
-              }
-            },
-            "response": []
+          "response": []
+        },
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/users/profile",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "users",
+                "profile"
+              ]
+            }
           },
-          {
-            "name": "Add Comment to Post",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/{postId}/comments",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts",
-                  "{postId}",
-                  "comments"
-                ]
-              }
-            },
-            "response": []
+          "response": []
+        },
+        {
+          "name": "Update User Profile",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:8000/users/profile",
+              "protocol": "http",
+              "host": [
+                "localhost:8000"
+              ],
+              "path": [
+                "users",
+                "profile"
+              ]
+            }
           },
-          {
-            "name": "Update Comment",
-            "request": {
-              "method": "PUT",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/comments/{id}",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts",
-                  "comments",
-                  "{id}"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Delete Comment",
-            "request": {
-              "method": "DELETE",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/posts/comments/{id}",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "posts",
-                  "comments",
-                  "{id}"
-                ]
-              }
-            },
-            "response": []
-          }
-        ]
-      },
-      {
-        "name": "Users",
-        "item": [
-          {
-            "name": "Register User",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/users/register",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "users",
-                  "register"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Login User",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/users/login",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "users",
-                  "login"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Get User Profile",
-            "request": {
-              "method": "GET",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/users/profile",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "users",
-                  "profile"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Update User Profile",
-            "request": {
-              "method": "PUT",
-              "header": [],
-              "body": {},
-              "url": {
-                "raw": "http://localhost:8000/users/profile",
-                "protocol": "http",
-                "host": [
-                  "localhost:8000"
-                ],
-                "path": [
-                  "users",
-                  "profile"
-                ]
-              }
-            },
-            "response": []
-          }
-        ]
-      }
-    ]
-  }
-  
+          "response": []
+        }
+      ]
+    }
+  ]
+}
