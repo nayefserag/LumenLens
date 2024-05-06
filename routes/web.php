@@ -34,9 +34,10 @@ $router->group(['prefix' => 'posts'], function () use ($router) {
     $router->put('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost', 'validateUpdateComment'], 'uses' => 'CommentController@update']);
     $router->delete('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost'], 'uses' => 'CommentController@destroy']);
 });
-$router->group(['prefix' => 'users', 'middleware' => 'auth'], function () use ($router) {
-    $router->post('/register', 'UserController@register');
-    $router->post('/login', 'UserController@login');
-    $router->get('/profile', 'UserController@profile');
-    $router->put('/profile', 'UserController@updateProfile');
+
+// Routes for authentication
+$router->group(['prefix' => 'auth', 'middleware' => 'auth'], function () use ($router) {
+    $router->post('register', [ 'middleware' => 'validateUserCreation', 'uses' => 'AuthController@register']);
+    $router->get('login', ['middleware' =>['validateLoginPayloade','checkUserExists'], 'uses' => 'AuthController@login']);
+    $router->post('logout', 'AuthController@logout');
 });
