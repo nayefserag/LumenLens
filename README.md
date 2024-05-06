@@ -1,8 +1,7 @@
-# LumenLens | Backend for Blog Application
-
+<h1 align="center">LumenLens | Backend for Blog Application</h1>
 <div style="display: flex; justify-content: center;">
 
-  <div style="flex: 1;">
+  <div style="align= center">
     <a href="lumenlense1.png"><img src="lumenlense1.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
     <a href="lumenlens2.png"><img src="lumenlens2.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
   </div>
