@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Log;
 use Closure;
-use Illuminate\Contracts\Auth\Factory as Auth;
-
+use Illuminate\Contracts\Auth\Factory as Auth1;
+use Illuminate\Support\Facades\Auth;
 class Authenticate
 {
     /**
@@ -20,7 +20,7 @@ class Authenticate
      * @param  \Illuminate\Contracts\Auth\Factory  $auth
      * @return void
      */
-    public function __construct(Auth $auth)
+    public function __construct(Auth1 $auth)
     {
         $this->auth = $auth;
     }
@@ -33,10 +33,21 @@ class Authenticate
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+        if ($request->header('Authorization')) {
+            $key = trim($request->header('Authorization'));
+            if (str_starts_with($key, 'Bearer ')) {
+                $token = substr($key, 7);
+                $apiToken = hash('sha256', $token);
+                $user = \App\Models\User::where('api_token', $apiToken)->first();
+                
+                if (!$user) {
+                    return response('Unauthorized', 401);
+                }
+
+                Auth::login($user);
+            }
         }
 
         return $next($request);
