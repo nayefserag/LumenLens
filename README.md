@@ -8,6 +8,7 @@
 
 LumenLens is a powerful backend solution tailored for a blog application, offering secure authentication, CRUD operations, and additional features to enhance the user experience. Built using Lumen, a lightweight PHP framework, it provides efficient endpoints for seamless communication between the frontend and server.
 
+
 ## Responsibilities
 During my involvement with LumenLens, I had the following responsibilities:
 - Designed and implemented RESTful APIs to enable smooth communication between the frontend and the server.
