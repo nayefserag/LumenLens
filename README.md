@@ -3,8 +3,8 @@
 <div style="display: flex; justify-content: center;">
 
   <div style="flex: 1;">
-    <a href="https://imgur.com/arzeGFk"><img src="https://i.imgur.com/arzeGFk.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
-    <a href="https://imgur.com/aERHdkR"><img src="https://i.imgur.com/aERHdkR.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
+    <a href="lumenlense1.png"><img src="lumenlense1.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
+    <a href="lumenlens2.png"><img src="lumenlens2.png" title="source: imgur.com" style="width: 40%; height: 60%;" /></a>
   </div>
 
 </div>
