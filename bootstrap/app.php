@@ -92,7 +92,7 @@ $app->configure('app');
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*
@@ -111,7 +111,15 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+
 $app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
+
+$app->routeMiddleware([
+    'validateUserCreation' => App\Http\Middleware\ValidateUserCreation::class,
+    'checkUserExists' => App\Http\Middleware\CheckUserExists::class,
+    'validateLoginPayloade' => App\Http\Middleware\ValidateLoginPayloade::class,
     'validatePost' => App\Http\Middleware\ValidatePostRequest::class,
     'checkPostExists' => App\Http\Middleware\CheckPostExists::class,
     'validatePostUpdate'=> App\Http\Middleware\ValidatePostUpdate::class,
