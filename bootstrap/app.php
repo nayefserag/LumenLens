@@ -111,5 +111,15 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+$app->routeMiddleware([
+    'validatePost' => App\Http\Middleware\ValidatePostRequest::class,
+    'checkPostExists' => App\Http\Middleware\CheckPostExists::class,
+    'validatePostUpdate'=> App\Http\Middleware\ValidatePostUpdate::class,
+    'validateComment' => App\Http\Middleware\ValidateComment::class,
+    'checkCommentExists' => App\Http\Middleware\CheckCommentExists::class,
+    'checkCommentBelongsToPost' => App\Http\Middleware\CheckCommentBelongsToPost::class,
+    'validateUpdateComment' => App\Http\Middleware\ValidateUpdateComment::class
+]);
+
 
 return $app;
