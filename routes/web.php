@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -21,17 +21,19 @@ $router->get('/', function () use ($router) {
 // Routes for blog posts
 $router->group(['prefix' => 'posts'], function () use ($router) {
     $router->get('/', 'PostController@index');
-    $router->post('/', 'PostController@store');
-    $router->get('/{id}', 'PostController@show');
-    $router->put('/{id}', 'PostController@update');
-    $router->delete('/{id}', 'PostController@destroy');
-    $router->get('/{postId}/comments', 'CommentController@index');
-    $router->post('/{postId}/comments', 'CommentController@store');
-    $router->put('/comments/{id}', 'CommentController@update');
-    $router->delete('/comments/{id}', 'CommentController@destroy');
+    $router->post('/', ['middleware' => 'validatePost', 'uses' => 'PostController@store']);
+    $router->get('/comments', 'CommentController@all');
+    $router->get('/{post_id}', ['middleware' => 'checkPostExists', 'uses' => 'PostController@show']);
+    $router->patch('/{post_id}', ['middleware' => ['checkPostExists', 'validatePostUpdate'], 'uses' => 'PostController@update']);
+    $router->delete('/{post_id}', ['middleware' => 'checkPostExists', 'uses' => 'PostController@destroy']);
+    $router->get('/{post_id}/restore', ['middleware' => 'checkPostExists', 'uses' => 'PostController@restore']);
+
+    $router->get('/{post_id}/comments', ['middleware' => 'checkPostExists', 'uses' => 'CommentController@getAllCommentsForPost']);
+    $router->get('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost'], 'uses' => 'CommentController@index']);
+    $router->post('/{post_id}/comments', ['middleware' => ['checkPostExists', 'validateComment'], 'uses' => 'CommentController@store']);
+    $router->put('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost', 'validateUpdateComment'], 'uses' => 'CommentController@update']);
+    $router->delete('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost'], 'uses' => 'CommentController@destroy']);
 });
-
-
 $router->group(['prefix' => 'users', 'middleware' => 'auth'], function () use ($router) {
     $router->post('/register', 'UserController@register');
     $router->post('/login', 'UserController@login');
