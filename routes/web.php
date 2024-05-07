@@ -13,13 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// API version and basic app information
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
 // Routes for blog posts
-$router->group(['prefix' => 'posts'], function () use ($router) {
+$router->group(['prefix' => 'posts', 'middleware' => 'jwtMiddleware'], function () use ($router) {
     $router->get('/', 'PostController@index');
     $router->post('/', ['middleware' => 'validatePost', 'uses' => 'PostController@store']);
     $router->get('/comments', 'CommentController@all');
@@ -36,8 +31,23 @@ $router->group(['prefix' => 'posts'], function () use ($router) {
 });
 
 // Routes for authentication
-$router->group(['prefix' => 'auth', 'middleware' => 'auth'], function () use ($router) {
-    $router->post('register', [ 'middleware' => 'validateUserCreation', 'uses' => 'AuthController@register']);
-    $router->get('login', ['middleware' =>['validateLoginPayloade','checkUserExists'], 'uses' => 'AuthController@login']);
-    $router->post('logout', 'AuthController@logout');
+$router->group(['prefix' => 'auth'], function () use ($router) {
+    $router->post('register', ['middleware' => 'validateUserCreation', 'uses' => 'AuthController@register']);
+    $router->post('login', ['middleware' => ['validateLoginPayloade', 'checkUserExists'], 'uses' => 'AuthController@login']);
+
+    $router->group(['middleware' => 'jwtMiddleware'], function () use ($router) {
+        $router->post('logout', 'AuthController@logout');
+    });
 });
+
+$router->group(['middleware' => 'jwtMiddleware'], function () use ($router) {
+    $router->get('/protected', function () {
+        return response()->json(['message' => 'This is a protected route']);
+    });
+});
+
+$router->group(['prefix' => 'user', 'middleware' => 'jwtMiddleware'], function () use ($router) {
+    $router->get('/me', 'UserController@me');
+}
+    );
+
