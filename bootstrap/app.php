@@ -112,9 +112,13 @@ $app->router->group([
     require __DIR__.'/../routes/web.php';
 });
 
-$app->routeMiddleware([
-    'auth' => App\Http\Middleware\Authenticate::class,
-]);
+// $app->routeMiddleware([
+//     'auth' => App\Http\Middleware\Authenticate::class,
+// ]);
+
+$app->configure('app');
+
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
 $app->routeMiddleware([
     'validateUserCreation' => App\Http\Middleware\ValidateUserCreation::class,
@@ -126,7 +130,8 @@ $app->routeMiddleware([
     'validateComment' => App\Http\Middleware\ValidateComment::class,
     'checkCommentExists' => App\Http\Middleware\CheckCommentExists::class,
     'checkCommentBelongsToPost' => App\Http\Middleware\CheckCommentBelongsToPost::class,
-    'validateUpdateComment' => App\Http\Middleware\ValidateUpdateComment::class
+    'validateUpdateComment' => App\Http\Middleware\ValidateUpdateComment::class,
+    'jwtMiddleware' => App\Http\Middleware\JWTMiddleware::class,
 ]);
 
 
