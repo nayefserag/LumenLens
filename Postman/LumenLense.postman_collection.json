@@ -1,0 +1,726 @@
+{
+	"info": {
+		"_postman_id": "e657e76f-c46d-4264-9d5a-5f36e4b217d6",
+		"name": "LumenLense",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19988335"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Comments",
+					"item": [
+						{
+							"name": "List Comments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/posts/1/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"posts",
+										"1",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Comment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}"
+									},
+									{
+										"key": "refresh_token",
+										"value": "{{refreshToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"This is a great post!\",\n    \"author\":\"Nayf\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/posts/11/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"posts",
+										"11",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Comment",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"Updated comment.\",\n    \"author\":\"ssdsdsd\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/posts/11/comments/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"posts",
+										"11",
+										"comments",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Comment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/posts/1/comments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"posts",
+										"1",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Sample Title\",\n    \"author\":\"Nayf\",\n    \"content\": \"Sample content.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/posts/121",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"posts",
+								"121"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Title\",\n    \"content\": \"Updated content.\",\n    \"author\":\"Nayf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/posts/124",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"posts",
+								"124"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/posts/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"posts",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/posts/1/restore",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"posts",
+								"1",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "jwt",
+				"jwt": [
+					{
+						"key": "algorithm",
+						"value": "HS256",
+						"type": "string"
+					},
+					{
+						"key": "isSecretBase64Encoded",
+						"value": false,
+						"type": "boolean"
+					},
+					{
+						"key": "payload",
+						"value": "{}",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					},
+					{
+						"key": "headerPrefix",
+						"value": "Bearer",
+						"type": "string"
+					},
+					{
+						"key": "queryParamKey",
+						"value": "token",
+						"type": "string"
+					},
+					{
+						"key": "header",
+						"value": "{}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json(); // Get the JSON response\r",
+									"pm.environment.set(\"Authorization\", response.token); // Set the token variable\r",
+									"pm.environment.set(\"refresh_token\", response.refresh_token); // Set the refresh token variable"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nayf serag\",\n    \"email\": \"john2@example.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json(); // Parses the JSON response body into a JavaScript object",
+									"pm.environment.set(\"Authorization\", `Bearer ${response.token}`); // Stores the access token in an environment variable",
+									"pm.environment.set(\"refresh_token\", `Bearer ${response.refresh_token}`); // Stores the refresh token in an environment variable",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refreshToken}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Operations",
+			"item": [
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Name\",\n    \"email\": \"newemail@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/user/profile/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "refresh_token",
+								"value": "{{refresh_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/user/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete my Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "jwt",
+		"jwt": [
+			{
+				"key": "algorithm",
+				"value": "HS256",
+				"type": "string"
+			},
+			{
+				"key": "isSecretBase64Encoded",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "payload",
+				"value": "{}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "headerPrefix",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "queryParamKey",
+				"value": "token",
+				"type": "string"
+			},
+			{
+				"key": "header",
+				"value": "{}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"// if (pm.environment.get(\"Authorization\")) {\r",
+					"//     pm.request.headers.add({\r",
+					"//         key: 'Authorization',\r",
+					"//         value: pm.environment.get(\"Authorization\")\r",
+					"//     });\r",
+					"// }\r",
+					"// if (pm.environment.get(\"refresh_token\")) {\r",
+					"//     pm.request.headers.add({\r",
+					"//         key: 'refresh_token',\r",
+					"//         value: pm.environment.get(\"refresh_token\")\r",
+					"//     });\r",
+					"// }\r",
+					"if (pm.environment.get(\"Authorization\")) {\r",
+					"    pm.request.headers.upsert({ key: 'Authorization', value: `Bearer ${pm.environment.get(\"Authorization\")}` });\r",
+					"}\r",
+					"if (pm.environment.get(\"refresh_token\")) {\r",
+					"    pm.request.headers.upsert({ key: 'refresh_token', value: `${pm.environment.get(\"refresh_token\")}` });\r",
+					"}\r",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
