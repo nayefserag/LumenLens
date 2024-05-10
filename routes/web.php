@@ -16,23 +16,23 @@ use Illuminate\Support\Facades\Route;
 // Routes for blog posts
 $router->group(['prefix' => 'posts', 'middleware' => 'jwtMiddleware'], function () use ($router) {
     $router->get('/', 'PostController@index');
-    $router->post('/', ['middleware' => 'validatePost', 'uses' => 'PostController@store']);
+    $router->post('/', ['middleware' => 'validate:post', 'uses' => 'PostController@store']);
     $router->get('/comments', 'CommentController@all');
-    $router->get('/{post_id}', ['middleware' => 'checkPostExists', 'uses' => 'PostController@show']);
-    $router->patch('/{post_id}', ['middleware' => ['checkPostExists', 'validatePostUpdate'], 'uses' => 'PostController@update']);
+    $router->get('/{post_id}',  'PostController@show');
+    $router->patch('/{post_id}', ['middleware' =>  'validate:post', 'uses' => 'PostController@update']);
     $router->delete('/{post_id}', ['middleware' => 'checkPostExists', 'uses' => 'PostController@destroy']);
     $router->get('/{post_id}/restore', ['middleware' => 'checkPostExists', 'uses' => 'PostController@restore']);
 
     $router->get('/{post_id}/comments', ['middleware' => 'checkPostExists', 'uses' => 'CommentController@getAllCommentsForPost']);
     $router->get('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost'], 'uses' => 'CommentController@index']);
-    $router->post('/{post_id}/comments', ['middleware' => ['checkPostExists', 'validateComment'], 'uses' => 'CommentController@store']);
-    $router->put('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost', 'validateUpdateComment'], 'uses' => 'CommentController@update']);
+    $router->post('/{post_id}/comments', ['middleware' => ['checkPostExists', 'validate:comment'], 'uses' => 'CommentController@store']);
+    $router->put('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost', 'validate:comment'], 'uses' => 'CommentController@update']);
     $router->delete('/{post_id}/comments/{comment_id}', ['middleware' => ['checkPostExists', 'checkCommentExists', 'checkCommentBelongsToPost'], 'uses' => 'CommentController@destroy']);
 });
 
 // Routes for authentication
 $router->group(['prefix' => 'auth'], function () use ($router) {
-    $router->post('register', ['middleware' => 'validateUserCreation', 'uses' => 'AuthController@register']);
+    $router->post('register', ['middleware' => 'validate:user', 'uses' => 'AuthController@register']);
     $router->post('login', ['middleware' => ['validateLoginPayloade', 'checkUserExists'], 'uses' => 'AuthController@login']);
 
     $router->group(['middleware' => 'jwtMiddleware'], function () use ($router) {
@@ -48,6 +48,6 @@ $router->group(['middleware' => 'jwtMiddleware'], function () use ($router) {
 
 $router->group(['prefix' => 'user', 'middleware' => 'jwtMiddleware'], function () use ($router) {
     $router->get('/me', 'UserController@me');
-}
-    );
-
+    $router->patch('/profile/update', ['middleware' => ['validate:user'], 'uses' => 'UserController@update']);
+    $router->delete('/delete', 'UserController@deleteuser');
+});

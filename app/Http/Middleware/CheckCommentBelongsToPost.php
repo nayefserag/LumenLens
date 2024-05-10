@@ -17,8 +17,7 @@ class CheckCommentBelongsToPost
     public function handle(Request $request, Closure $next)
     {
         $commentId = $request->route('comment_id');
-        $postId = $request->route('id');
-
+        $postId = $request->route('post_id');
         $post = Post::findOrFail($postId);
         if (in_array($commentId, $post->comment_ids ?? [])) {
             return $next($request);
