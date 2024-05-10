@@ -48,6 +48,7 @@ $router->group(['middleware' => 'jwtMiddleware'], function () use ($router) {
 
 $router->group(['prefix' => 'user', 'middleware' => 'jwtMiddleware'], function () use ($router) {
     $router->get('/me', 'UserController@me');
-}
-    );
+    $router->patch('/profile/update', ['middleware' => ['validateUserUpdate'], 'uses' => 'UserController@update']);
+    $router->delete('/delete', 'UserController@deleteuser');
+});
 

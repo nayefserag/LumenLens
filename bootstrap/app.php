@@ -132,6 +132,7 @@ $app->routeMiddleware([
     'checkCommentBelongsToPost' => App\Http\Middleware\CheckCommentBelongsToPost::class,
     'validateUpdateComment' => App\Http\Middleware\ValidateUpdateComment::class,
     'jwtMiddleware' => App\Http\Middleware\JWTMiddleware::class,
+    'validateUserUpdate' => App\Http\Middleware\ValidateUserUpdate::class,
 ]);
 
 
