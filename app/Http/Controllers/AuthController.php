@@ -35,8 +35,9 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request)
-    {
-        $request->user()->forceFill(['refresh_token' => null])->save();
+    {   
+        
+        $request->user()->forceFill(['Authorization' => null])->save();
         return response('Logged out', 200);
     }
 }

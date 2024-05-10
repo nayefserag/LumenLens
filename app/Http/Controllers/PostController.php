@@ -24,13 +24,20 @@ class PostController extends Controller
 
     public function show($post_id)
     {
-        $post = Post::findOrFail($post_id);
+        $post = Post::find($post_id);
+        if (!$post) {
+            return response()->json(['error' => 'Post not found'], 404);
+        }
         return response()->json($post);
     }
+    
 
     public function update(Request $request, $post_id)
     {
         $post = Post::find($post_id);
+        if (!$post) {
+            return response()->json(['error' => 'Post not found'], 404);
+        }
         $post->update($request->all());
         return response()->json(['message' => 'Post updated successfully!', 'data' => $post], 201);
     }
