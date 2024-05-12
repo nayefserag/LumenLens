@@ -50,4 +50,6 @@ $router->group(['prefix' => 'user', 'middleware' => 'jwtMiddleware'], function (
     $router->get('/me', 'UserController@me');
     $router->patch('/profile/update', ['middleware' => ['validate:user'], 'uses' => 'UserController@update']);
     $router->delete('/delete', 'UserController@deleteuser');
+    // $router->post('/create-token', 'PaymentController@createToken');
+    $router->post('/charge', 'PaymentController@charge');
 });
