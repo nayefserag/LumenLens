@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Utils\Token;
-use App\Models\Post;
+use App\Models\Role;
 use App\Utils\Password;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
 class UserController extends Controller
@@ -62,6 +60,24 @@ class UserController extends Controller
         $request->headers->remove('Authorization');
         return response()->json('your account deleted successfully',200);
     }
+
+    public function changeRole(Request $request)
+    {
+        $token = $request->bearerToken();
+        $payload = json_decode(base64_decode(explode('.', $token)[1]), true);
+        $userId = $payload['data']['user_id'];
+        $user = User::find($userId);
+        $role = Role::where('role', $request->input('role'))->first();
+        if (!$role) {
+            return response()->json(['error' => 'Role not found'], 404);
+        }
+        $user->role_id = $role->id;
+        $user->save();
+        $request->headers->remove('Authorization');
+        return response()->json(['message' => 'Your role has been changed successfully'], 200);
+    }
+    
+
     
 
     

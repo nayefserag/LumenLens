@@ -41,6 +41,11 @@ class ValidateRequest
                     'password' => 'required|min:6',
                 ];
                 break;
+                case 'role':
+                    $rules = [
+                        'role' => 'required|max:255',
+                    ];
+                break;
             default:
                 abort(400, 'Unknown request type');
         }

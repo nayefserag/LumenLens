@@ -126,9 +126,11 @@ $app->routeMiddleware([
     'validateLoginPayloade' => App\Http\Middleware\ValidateLoginPayloade::class,
     'checkPostExists' => App\Http\Middleware\CheckPostExists::class,
     'checkCommentExists' => App\Http\Middleware\CheckCommentExists::class,
+    'checkRoleExists' => App\Http\Middleware\CheckRoleExists::class,
     'checkCommentBelongsToPost' => App\Http\Middleware\CheckCommentBelongsToPost::class,
     'jwtMiddleware' => App\Http\Middleware\JWTMiddleware::class,
     'validate' => App\Http\Middleware\ValidateRequest::class,
+    'admin' => \App\Http\Middleware\AdminMiddleware::class,
     
 ]);
 

@@ -46,10 +46,17 @@ $router->group(['middleware' => 'jwtMiddleware'], function () use ($router) {
     });
 });
 
-$router->group(['prefix' => 'user', 'middleware' => 'jwtMiddleware'], function () use ($router) {
+$router->group(['prefix' => 'user', 'middleware' => ['jwtMiddleware', 'admin']], function () use ($router) {
     $router->get('/me', 'UserController@me');
     $router->patch('/profile/update', ['middleware' => ['validate:user'], 'uses' => 'UserController@update']);
     $router->delete('/delete', 'UserController@deleteuser');
+    $router->patch('/change-role',['middleware' => 'validate:role', 'uses' => 'UserController@changeRole']);
     // $router->post('/create-token', 'PaymentController@createToken');
     $router->post('/charge', 'PaymentController@charge');
+});
+
+$router->group(['prefix'=> 'role'], function () use ($router) {
+    $router->post('/create-role',['middleware' => ['validate:role', 'checkRoleExists'], 'uses' => 'RoleController@createRole']);
+    $router->get('/all-roles', 'RoleController@allRoles');
+    $router->delete('/delete-role/{role_id}', ['middleware' => 'checkRoleExists', 'uses' => 'RoleController@deleteRole']);
 });
