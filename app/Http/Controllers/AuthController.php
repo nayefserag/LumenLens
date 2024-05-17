@@ -3,22 +3,36 @@ namespace App\Http\Controllers;
 use App\Utils\Token;
 use App\Utils\Password;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use Laravel\Lumen\Routing\Controller;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public  function register(Request $request)
     {
-        $request['password'] = Password::hashPassword($request['password']);
-        $user = User::create($request->all());
-        $token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name]);
-        $refresh_token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name]);
-        $user['refresh_token'] = $refresh_token;
-        $user->save();
-        return response()->json(['token' => $token , 'refresh_token' => $refresh_token], 201);
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Password::hashPassword($request->password),
+            ]);
+            $role =  Role::where('role', 'user')->first();
+            $user['role_id'] = $role->id;
+
+            $token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email, 'name' => $user->name , 'role_id' => $role->id]);
+            $refresh_token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email, 'name' => $user->name , 'role_id' => $user->role_id]);
+            $user->refresh_token = $refresh_token;
+            $user->save();
+            return response()->json(['token' => $token, 'refresh_token' => $refresh_token], 201);
+        } catch (\Exception $e) {
+            Log::error('User registration failed', ['error' => $e->getMessage()]);
+            return response()->json(['error' => 'Registration failed', 'message' => $e->getMessage()], 500);
+        }
     }
+    
 
     public function login(Request $request)
     {

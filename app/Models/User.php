@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
+use App\Models\Role;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -29,4 +30,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $hidden = ['password'];
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
