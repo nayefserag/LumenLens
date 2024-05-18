@@ -35,4 +35,19 @@ class RoleController extends Controller
         return response()->json(['message' => 'Role updated successfully!', 'data' => $role], 201);
     }
 
+    public function changeRoleForUser(Request $request , $user_id)
+    {
+        $user = User::find($user_id);
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+        $role = Role::where('role', $request->input('role'))->first();
+        if (!$role) {
+            return response()->json(['error' => 'This Role not found'], 404);
+        }
+        $user->role_id = $role->id;
+        $user->save();
+        return response()->json(['message' => "`{$user->name}` is now a `{$role->role}`"], 200);
+    }
+
 }
