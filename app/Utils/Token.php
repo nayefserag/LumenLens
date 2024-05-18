@@ -110,4 +110,11 @@ class Token
         }
         return null;
     }
+    public static function getValueFromToken(Request $request, $key)
+    {
+        $token = $request->bearerToken();
+        $payload = json_decode(base64_decode(explode('.', $token)[1]), true);
+        return $payload['data'][$key];
+    }
+    
 }
