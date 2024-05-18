@@ -24,7 +24,7 @@ class AdminMiddleware
             if (!$role) {
                 throw new \Exception('Role not found');
             }
-            if ($role->role !== 'admin' ) {
+            if (!in_array($role->role, ['admin', 'super_admin'])) {
                 throw new \Exception("you are `{$role->role}` only admin can access this route");
             }
             return $next($request);
