@@ -21,12 +21,10 @@ class AuthController extends Controller
             ]);
             $role =  Role::where('role', 'user')->first();
             $user['role_id'] = $role->id;
-
-            $token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email, 'name' => $user->name , 'role_id' => $role->id]);
-            $refresh_token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email, 'name' => $user->name , 'role_id' => $user->role_id]);
-            $user->refresh_token = $refresh_token;
+            $tokens = Token::generateJwtTokens(['user_id' => $user->id, 'email' => $user->email, 'name' => $user->name , 'role_id' => $role->id]);
+            $user->refresh_token = $tokens['refresh_token'];
             $user->save();
-            return response()->json(['token' => $token, 'refresh_token' => $refresh_token], 201);
+            return response()->json(['token' => $tokens['access_token'], 'refresh_token' => $tokens['refresh_token']], 201);
         } catch (\Exception $e) {
             Log::error('User registration failed', ['error' => $e->getMessage()]);
             return response()->json(['error' => 'Registration failed', 'message' => $e->getMessage()], 500);
@@ -38,11 +36,10 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request['email'])->first();
         if ($user && Password::checkPassword($request['password'], $user->password)) {
-            $token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name ,'role_id' => $user->role_id]);
-            $refresh_token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name ,'role_id' => $user->role_id]);
-            $user['refresh_token'] = $refresh_token;
+            $tokens = Token::generateJwtTokens(['user_id' => $user->id, 'email' => $user->email, 'name' => $user->name, 'role_id' => $user->role_id]);
+            $user['refresh_token'] = $tokens['refresh_token'];
             $user->save();
-            return response()->json(['token' => $token , 'refresh_token' => $refresh_token], 201);
+            return response()->json(['token' => $tokens['access_token'] , 'refresh_token' => $tokens['refresh_token']], 201);
         }
 
         return response('Credentials do not match', 401);
