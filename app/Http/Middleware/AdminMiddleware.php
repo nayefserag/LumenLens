@@ -17,15 +17,15 @@ class AdminMiddleware
         $token = str_replace('Bearer ', '', $token);
         try {
             $payload = json_decode(base64_decode(explode('.', $token)[1]), true);
-            // Verify if 'role_id' exists in the payload
-            print_r($payload);
             if (!isset($payload['data']['role_id'])) {
                 throw new \Exception('Role ID not found in token payload');
             }
-            // Check if the role is admin
             $role = Role::find($payload['data']['role_id']);
-            if (!$role || $role->role !== 'admin') {
-                throw new \Exception('Unauthorized');
+            if (!$role) {
+                throw new \Exception('Role not found');
+            }
+            if ($role->role !== 'admin' ) {
+                throw new \Exception("you are `{$role->role}` only admin can access this route");
             }
             return $next($request);
         } catch (\Exception $e) {

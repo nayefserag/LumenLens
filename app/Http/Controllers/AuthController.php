@@ -38,8 +38,8 @@ class AuthController extends Controller
     {
         $user = User::where('email', $request['email'])->first();
         if ($user && Password::checkPassword($request['password'], $user->password)) {
-            $token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name]);
-            $refresh_token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name]);
+            $token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name ,'role_id' => $user->role_id]);
+            $refresh_token = Token::generateJwt(['user_id' => $user->id, 'email' => $user->email , 'name' => $user->name ,'role_id' => $user->role_id]);
             $user['refresh_token'] = $refresh_token;
             $user->save();
             return response()->json(['token' => $token , 'refresh_token' => $refresh_token], 201);
