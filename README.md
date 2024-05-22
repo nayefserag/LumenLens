@@ -8,7 +8,6 @@
 
 LumenLens is a powerful backend solution tailored for a blog application, offering secure authentication, CRUD operations, and additional features to enhance the user experience. Built using Lumen, a lightweight PHP framework, it provides efficient endpoints for seamless communication between the frontend and server.
 
-
 ## Responsibilities
 During my involvement with LumenLens, I had the following responsibilities:
 - Designed and implemented RESTful APIs to enable smooth communication between the frontend and the server.
@@ -23,6 +22,13 @@ During my involvement with LumenLens, I had the following responsibilities:
 - Developed a comment model and post model, allowing users to comment on posts.
 - Enabled soft delete for posts and hard delete for comments.
 - Applied a global guard to all routes to verify user authentication.
+
+## User Roles and Access
+LumenLens incorporates a role-based access control system to manage permissions for different types of users. The roles and their respective access permissions are as follows:
+- **User**: Can view posts, create comments, and manage their own profile.
+- **Admin**: Has all user permissions plus the ability to create, edit, and delete any posts and comments.
+- **Super Admin**: Has all admin permissions and can manage user roles and access levels, as well as perform system-level configurations.
+
 
 ## Project Technologies & Tools
 The project utilized the following technologies and tools:
